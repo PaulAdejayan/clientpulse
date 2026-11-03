@@ -1,24 +1,32 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-display",
+  weight: "400",
+  subsets: ["latin"],
+});
+
+const brandName = process.env.NEXT_PUBLIC_BRAND_NAME || 'ClientPulse';
+const brandUrl = process.env.NEXT_PUBLIC_BRAND_URL || 'https://clientpulse.dev';
 
 export const metadata: Metadata = {
-  title: "ClientPulse - Client Intake & Follow-Up Automation",
+  title: `${brandName} - Client Intake & Follow-Up Automation`,
   description: "Automate client intake and follow-up for your service business. Capture leads, send automated follow-ups, and never lose a client again.",
-  metadataBase: new URL("https://clientpulse.dev"),
+  metadataBase: new URL(brandUrl),
   openGraph: {
-    title: "ClientPulse - Client Intake & Follow-Up Automation",
+    title: `${brandName} - Client Intake & Follow-Up Automation`,
     description: "Capture leads with a simple intake form. Automated follow-up emails go out on Day 1, 3, and 7 — so you never lose a client to slow follow-up again.",
-    url: "https://clientpulse.dev",
-    siteName: "ClientPulse",
+    url: brandUrl,
+    siteName: brandName,
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "ClientPulse - Never Lose a Client to Slow Follow-Up",
+    title: `${brandName} - Never Lose a Client to Slow Follow-Up`,
     description: "Automated client intake and follow-up for service businesses. Set up in 5 minutes.",
   },
   keywords: ["client intake form", "follow-up automation", "service business CRM", "lead capture", "automated follow-up emails"],
@@ -28,16 +36,16 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} antialiased`}>
         {children}
-        <div id="cookie-consent" className="fixed bottom-4 right-4 z-50 hidden max-w-sm bg-slate-900 border border-slate-700 rounded-2xl shadow-xl p-4">
-          <p className="text-sm text-slate-300 mb-3">
+        <div id="cookie-consent" className="fixed bottom-4 right-4 z-50 hidden max-w-sm bg-[var(--ink)] text-[var(--bg)] border border-white/10 rounded-2xl shadow-xl p-4">
+          <p className="text-sm mb-3">
             We use essential cookies for authentication. See our{" "}
-            <a href="/privacy" className="text-blue-400 font-medium hover:text-blue-300 underline underline-offset-2">Privacy Policy</a>.
+            <a href="/privacy" className="underline underline-offset-2 font-medium">Privacy Policy</a>.
           </p>
           <div className="flex gap-2">
-            <button id="cookie-accept" className="flex-1 bg-blue-500 text-white px-3 py-2 rounded-lg text-sm font-medium hover:bg-blue-400 transition">Accept</button>
-            <button id="cookie-decline" className="flex-1 border border-slate-600 text-slate-300 px-3 py-2 rounded-lg text-sm hover:bg-slate-800 transition">Decline</button>
+            <button id="cookie-accept" className="flex-1 bg-[var(--bg)] text-[var(--ink)] px-3 py-2 rounded-full text-sm font-medium transition">Accept</button>
+            <button id="cookie-decline" className="flex-1 border border-white/20 px-3 py-2 rounded-full text-sm transition">Decline</button>
           </div>
         </div>
         <script dangerouslySetInnerHTML={{ __html: `
