@@ -2,7 +2,11 @@
 
 Client intake and follow-up automation for solo service businesses — plumbers, cleaners, tax consultants, lawn-care crews — the kind of operator who loses jobs because they can't get back to a lead at 9 PM.
 
+**Live:** [clientpulse.dev](https://clientpulse.dev) · **Stack:** Next.js 16 · Turso · Stripe · Twilio · Resend
+
 The pitch: a branded intake form you can share anywhere, email + SMS follow-ups that fire on Day 1 / Day 3 / Day 7 automatically, and a single dashboard that shows who came in, who's been contacted, and who's still waiting on you.
+
+![ClientPulse landing page — warm editorial design with intake dashboard mockup](docs/screenshot-landing.png)
 
 ## Status
 
