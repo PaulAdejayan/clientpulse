@@ -32,7 +32,7 @@ function Nav() {
         </div>
         <div className="flex items-center gap-5">
           <a href="/login" className="text-sm text-[var(--muted)] hover:text-[var(--ink)] transition-colors">Log in</a>
-          <a href="/signup" className="bg-[var(--ink)] text-[var(--bg)] px-4 py-2 text-sm font-medium rounded-full hover:bg-[var(--ink)]/90 transition-colors">
+          <a href="/signup" className="bg-[var(--ink)] text-[var(--bg)] px-4 py-2 text-sm font-medium rounded-full hover:bg-[var(--ink)]/90 active:scale-[0.98] transition-all">
             Start free
           </a>
         </div>
@@ -106,7 +106,7 @@ function Hero() {
             ClientPulse catches every lead and sends personalized follow-ups on autopilot. Set it up in five minutes. No CRM experience required.
           </p>
           <div className="flex flex-wrap items-center gap-5">
-            <a href="/signup" className="bg-[var(--ink)] text-[var(--bg)] px-6 py-3 rounded-full text-sm font-medium hover:bg-[var(--accent)] transition-colors">
+            <a href="/signup" className="bg-[var(--ink)] text-[var(--bg)] px-6 py-3 rounded-full text-sm font-medium hover:bg-[var(--accent)] active:scale-[0.98] transition-all">
               Start a free trial
             </a>
             <a href="#how-it-works" className="text-sm font-medium text-[var(--ink)] underline underline-offset-4 decoration-[var(--muted)] hover:decoration-[var(--ink)] transition-colors">
@@ -240,7 +240,7 @@ function Pricing() {
             <button
               onClick={() => handleCheckout("starter")}
               disabled={loading === "starter"}
-              className="w-full border border-[var(--ink)] text-[var(--ink)] py-3 rounded-full text-sm font-medium hover:bg-[var(--ink)] hover:text-[var(--bg)] transition-colors disabled:opacity-50 mt-auto"
+              className="w-full border border-[var(--ink)] text-[var(--ink)] py-3 rounded-full text-sm font-medium hover:bg-[var(--ink)] hover:text-[var(--bg)] active:scale-[0.98] transition-all disabled:opacity-50 mt-auto"
             >
               {loading === "starter" ? "Loading…" : "Start with Starter"}
             </button>
@@ -268,7 +268,7 @@ function Pricing() {
             <button
               onClick={() => handleCheckout("pro")}
               disabled={loading === "pro"}
-              className="w-full bg-[var(--bg)] text-[var(--ink)] py-3 rounded-full text-sm font-medium hover:bg-[#fcfaf5] transition-colors disabled:opacity-50 mt-auto"
+              className="w-full bg-[var(--bg)] text-[var(--ink)] py-3 rounded-full text-sm font-medium hover:bg-[#fcfaf5] active:scale-[0.98] transition-all disabled:opacity-50 mt-auto"
             >
               {loading === "pro" ? "Loading…" : "Start with Pro"}
             </button>
@@ -298,7 +298,7 @@ function CTABanner() {
           The question is whether you&apos;ll be the one who answers first.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-5">
-          <a href="/signup" className="bg-[var(--bg)] text-[var(--ink)] px-6 py-3 rounded-full text-sm font-medium hover:bg-[#fcfaf5] transition-colors">
+          <a href="/signup" className="bg-[var(--bg)] text-[var(--ink)] px-6 py-3 rounded-full text-sm font-medium hover:bg-[#fcfaf5] active:scale-[0.98] transition-all">
             Start a free trial
           </a>
           <a href="#pricing" className="text-sm font-medium underline underline-offset-4 decoration-white/50 hover:decoration-white transition-colors">
@@ -371,7 +371,7 @@ function Footer() {
           <div>
             <p className="font-display text-3xl mb-4">ClientPulse</p>
             <p className="text-sm leading-relaxed opacity-70 max-w-xs mb-6">Client intake and follow-up for service businesses that don&apos;t have time for a CRM.</p>
-            <a href="/signup" className="inline-block bg-[var(--bg)] text-[var(--ink)] px-5 py-2.5 rounded-full text-sm font-medium hover:bg-[#fcfaf5] transition-colors">
+            <a href="/signup" className="inline-block bg-[var(--bg)] text-[var(--ink)] px-5 py-2.5 rounded-full text-sm font-medium hover:bg-[#fcfaf5] active:scale-[0.98] transition-all">
               Start free trial
             </a>
           </div>
