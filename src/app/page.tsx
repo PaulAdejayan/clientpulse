@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-slate-900 text-white">
+    <div className="min-h-screen bg-[var(--bg)] text-[var(--ink)]">
       <Nav />
       <Hero />
       <Features />
@@ -20,21 +21,19 @@ export default function LandingPage() {
 // ─── Nav ──────────────────────────────────────────────────────────
 function Nav() {
   return (
-    <nav className="sticky top-0 z-40 bg-slate-900/95 backdrop-blur-md border-b border-white/10">
-      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center text-white font-bold text-sm">CP</div>
-          <span className="font-bold text-xl tracking-tight text-white">ClientPulse</span>
-        </a>
-        <div className="hidden sm:flex items-center gap-8 text-sm text-slate-400 font-medium">
-          <a href="#features" className="hover:text-white transition">Features</a>
-          <a href="#pricing" className="hover:text-white transition">Pricing</a>
-          <a href="#faq" className="hover:text-white transition">FAQ</a>
+    <nav className="sticky top-0 z-40 bg-[var(--bg)]/90 backdrop-blur-sm border-b border-[var(--rule)]">
+      <div className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+        <Link href="/" className="font-display text-2xl leading-none text-[var(--ink)]">ClientPulse</Link>
+        <div className="hidden sm:flex items-center gap-8 text-sm text-[var(--muted)]">
+          <a href="#features" className="hover:text-[var(--ink)] transition-colors">Features</a>
+          <a href="#how-it-works" className="hover:text-[var(--ink)] transition-colors">How it works</a>
+          <a href="#pricing" className="hover:text-[var(--ink)] transition-colors">Pricing</a>
+          <a href="#faq" className="hover:text-[var(--ink)] transition-colors">FAQ</a>
         </div>
-        <div className="flex items-center gap-3">
-          <a href="/login" className="text-sm text-slate-400 hover:text-white font-medium transition">Log in</a>
-          <a href="/signup" className="bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-blue-400 transition shadow-sm">
-            Start Free Trial
+        <div className="flex items-center gap-5">
+          <a href="/login" className="text-sm text-[var(--muted)] hover:text-[var(--ink)] transition-colors">Log in</a>
+          <a href="/signup" className="bg-[var(--ink)] text-[var(--bg)] px-4 py-2 text-sm font-medium rounded-full hover:bg-[var(--ink)]/90 transition-colors">
+            Start free
           </a>
         </div>
       </div>
@@ -45,55 +44,45 @@ function Nav() {
 // ─── Hero ─────────────────────────────────────────────────────────
 function DashboardMockup() {
   return (
-    <div className="relative w-full max-w-3xl mx-auto mt-14 rounded-2xl shadow-2xl shadow-black/40 border border-white/10 overflow-hidden bg-white">
-      <div className="bg-gray-100 px-4 py-3 flex items-center gap-2 border-b border-gray-200">
-        <div className="flex gap-1.5">
-          <div className="w-3 h-3 rounded-full bg-red-400" />
-          <div className="w-3 h-3 rounded-full bg-yellow-400" />
-          <div className="w-3 h-3 rounded-full bg-green-400" />
-        </div>
-        <div className="flex-1 mx-4 bg-white rounded-md px-3 py-1 text-xs text-gray-400 border border-gray-200 text-center">
-          app.clientpulse.io/dashboard
+    <div className="relative w-full rounded-xl bg-[#fcfaf5] border border-[var(--rule)] overflow-hidden shadow-[0_30px_60px_-20px_rgba(26,19,16,0.25)]">
+      <div className="bg-[#f6f2eb] px-4 py-2.5 border-b border-[var(--rule)] flex items-center">
+        <div className="flex-1 bg-[#fcfaf5] rounded-md px-3 py-1 text-xs text-[var(--muted)] border border-[var(--rule)]">
+          clientpulse.dev/dashboard
         </div>
       </div>
-      <div className="p-6 bg-gray-50">
-        <div className="grid grid-cols-3 gap-4 mb-6">
+      <div className="p-5 bg-[#faf7f1]">
+        <div className="grid grid-cols-3 gap-3 mb-4">
           {[
-            { label: "New Leads", value: "12", color: "text-blue-600", bg: "bg-blue-50" },
-            { label: "Follow-ups Sent", value: "34", color: "text-green-600", bg: "bg-green-50" },
-            { label: "Awaiting Reply", value: "5", color: "text-orange-500", bg: "bg-orange-50" },
+            { label: "New leads this week", value: "12" },
+            { label: "Follow-ups sent", value: "34" },
+            { label: "Awaiting reply", value: "5" },
           ].map((s) => (
-            <div key={s.label} className={`${s.bg} rounded-xl p-4`}>
-              <div className={`text-2xl font-bold ${s.color}`}>{s.value}</div>
-              <div className="text-xs text-gray-500 mt-0.5">{s.label}</div>
+            <div key={s.label} className="bg-[#fcfaf5] rounded-lg p-3 border border-[var(--rule)]">
+              <div className="font-display text-3xl text-[var(--ink)] tnum leading-none">{s.value}</div>
+              <div className="text-[11px] text-[var(--muted)] mt-1.5">{s.label}</div>
             </div>
           ))}
         </div>
-        <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-          <div className="px-4 py-3 border-b border-gray-100 flex items-center justify-between">
-            <span className="text-sm font-semibold text-gray-700">Recent Leads</span>
-            <span className="text-xs text-blue-600 font-medium">View all</span>
+        <div className="bg-[#fcfaf5] rounded-lg border border-[var(--rule)] overflow-hidden">
+          <div className="px-4 py-2.5 border-b border-[var(--rule)] flex items-center justify-between">
+            <span className="text-xs font-medium text-[var(--ink)]">Recent leads</span>
+            <span className="text-[11px] text-[var(--muted)]">Last 48 hours</span>
           </div>
-          <div className="divide-y divide-gray-50">
+          <div className="divide-y divide-[var(--rule)]">
             {[
-              { name: "Sarah Johnson", service: "House Cleaning", status: "Follow-up sent", dot: "bg-green-400" },
-              { name: "Mike Torres", service: "Plumbing Repair", status: "New lead", dot: "bg-blue-400" },
-              { name: "Emily Chen", service: "Tax Consulting", status: "Responded", dot: "bg-purple-400" },
-              { name: "David Park", service: "Lawn Care", status: "Follow-up sent", dot: "bg-green-400" },
+              { name: "Sarah Johnson", service: "House cleaning", status: "Follow-up sent", when: "2h ago" },
+              { name: "Mike Torres", service: "Plumbing repair", status: "New lead", when: "4h ago" },
+              { name: "Emily Chen", service: "Tax consulting", status: "Responded", when: "yesterday" },
+              { name: "David Park", service: "Lawn care", status: "Follow-up sent", when: "yesterday" },
             ].map((lead) => (
-              <div key={lead.name} className="px-4 py-3 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="w-7 h-7 rounded-full bg-gray-200 flex items-center justify-center text-xs font-semibold text-gray-600">
-                    {lead.name.split(" ").map((n) => n[0]).join("")}
-                  </div>
-                  <div>
-                    <div className="text-sm font-medium text-gray-800">{lead.name}</div>
-                    <div className="text-xs text-gray-400">{lead.service}</div>
-                  </div>
+              <div key={lead.name} className="px-4 py-2.5 flex items-center justify-between">
+                <div>
+                  <div className="text-sm font-medium text-[var(--ink)]">{lead.name}</div>
+                  <div className="text-xs text-[var(--muted)]">{lead.service}</div>
                 </div>
-                <div className="flex items-center gap-1.5">
-                  <div className={`w-1.5 h-1.5 rounded-full ${lead.dot}`} />
-                  <span className="text-xs text-gray-500">{lead.status}</span>
+                <div className="text-right">
+                  <div className="text-xs text-[var(--ink)]">{lead.status}</div>
+                  <div className="text-[11px] text-[var(--muted)] tnum">{lead.when}</div>
                 </div>
               </div>
             ))}
@@ -106,73 +95,59 @@ function DashboardMockup() {
 
 function Hero() {
   return (
-    <section className="relative py-24 sm:py-32 overflow-hidden bg-slate-900">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:64px_64px] pointer-events-none" />
-      <div className="absolute inset-x-0 top-0 h-full bg-[radial-gradient(ellipse_80%_60%_at_50%_-20%,rgba(59,130,246,0.25),transparent)] pointer-events-none" />
-      <div className="relative max-w-5xl mx-auto px-6 text-center">
-        <div className="inline-flex items-center gap-2 bg-blue-500/15 text-blue-300 px-4 py-1.5 rounded-full text-sm font-medium mb-8 border border-blue-500/30">
-          <span className="w-1.5 h-1.5 bg-blue-400 rounded-full" />
-          Built for service businesses
+    <section className="relative pt-20 pb-24 sm:pt-28 sm:pb-32">
+      <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-[1.1fr_1fr] gap-14 items-center">
+        <div>
+          <p className="text-sm text-[var(--muted)] mb-6 tracking-wide">For solo service businesses — plumbers, cleaners, consultants, trades.</p>
+          <h1 className="font-display text-[clamp(44px,7vw,96px)] leading-[0.95] text-[var(--ink)] mb-7">
+            Never lose a client to <span className="text-[var(--accent)] italic">slow follow-up</span> again.
+          </h1>
+          <p className="text-lg text-[var(--muted)] max-w-xl leading-relaxed mb-9">
+            ClientPulse catches every lead and sends personalized follow-ups on autopilot. Set it up in five minutes. No CRM experience required.
+          </p>
+          <div className="flex flex-wrap items-center gap-5">
+            <a href="/signup" className="bg-[var(--ink)] text-[var(--bg)] px-6 py-3 rounded-full text-sm font-medium hover:bg-[var(--accent)] transition-colors">
+              Start a free trial
+            </a>
+            <a href="#how-it-works" className="text-sm font-medium text-[var(--ink)] underline underline-offset-4 decoration-[var(--muted)] hover:decoration-[var(--ink)] transition-colors">
+              See how it works
+            </a>
+          </div>
+          <p className="mt-5 text-xs text-[var(--muted)]">Seven-day trial · No card required · Cancel from your dashboard.</p>
         </div>
-        <h1 className="text-5xl sm:text-6xl font-bold tracking-tight leading-[1.1] mb-6 text-white">
-          Never lose a client to
-          <br />
-          <span className="text-blue-400">slow follow-up</span> again
-        </h1>
-        <p className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-          ClientPulse captures every lead and sends personalized follow-ups automatically.
-          Set it up in 5 minutes. No CRM experience needed.
-        </p>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-          <a href="/signup" className="w-full sm:w-auto bg-white text-slate-900 px-8 py-3.5 rounded-xl text-base font-semibold hover:bg-blue-50 transition shadow-xl shadow-black/20">
-            Start Free Trial →
-          </a>
-          <a href="#features" className="w-full sm:w-auto text-slate-300 px-8 py-3.5 rounded-xl text-base font-medium hover:text-white hover:bg-white/10 transition border border-white/20">
-            See how it works
-          </a>
+        <div className="relative">
+          <DashboardMockup />
         </div>
-        <p className="mt-4 text-sm text-slate-500">7-day free trial · No credit card required</p>
-        <DashboardMockup />
       </div>
     </section>
   );
 }
 
 // ─── Features ─────────────────────────────────────────────────────
-const featureIcons: Record<string, React.ReactNode> = {
-  intake: (<svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>),
-  followup: (<svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>),
-  dashboard: (<svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>),
-  security: (<svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>),
-  setup: (<svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>),
-  pricing: (<svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>),
-};
-
 function Features() {
   const features = [
-    { iconKey: "intake",    title: "Smart Intake Forms",  topBorder: "border-t-blue-500",    iconColor: "text-blue-400 bg-blue-500/10",   desc: "Customizable forms that capture exactly what you need. Embed on your website or share a link — no coding required." },
-    { iconKey: "followup",  title: "Auto Follow-Ups",     topBorder: "border-t-violet-500",  iconColor: "text-violet-400 bg-violet-500/10", desc: "Set up email sequences that go out automatically. Day 1, Day 3, Day 7 — you choose the timing and message." },
-    { iconKey: "dashboard", title: "Simple Dashboard",    topBorder: "border-t-emerald-500", iconColor: "text-emerald-400 bg-emerald-500/10", desc: "See all your leads in one place. Track who's been contacted, who responded, and who needs attention." },
-    { iconKey: "security",  title: "Enterprise Security", topBorder: "border-t-orange-500",  iconColor: "text-orange-400 bg-orange-500/10",  desc: "AES-256 encryption, OWASP-compliant, GDPR ready. Your client data is protected to bank-grade standards." },
-    { iconKey: "setup",     title: "5-Minute Setup",      topBorder: "border-t-rose-500",    iconColor: "text-rose-400 bg-rose-500/10",     desc: "No IT team needed. Sign up, customize your form, share the link. You're live in minutes." },
-    { iconKey: "pricing",   title: "Affordable Pricing",  topBorder: "border-t-teal-500",    iconColor: "text-teal-400 bg-teal-500/10",    desc: "One simple price. No per-contact fees, no surprise charges. Cancel anytime — no questions asked." },
+    { n: "01", title: "Intake forms that fit the work", desc: "Pick the fields you actually need — name, phone, service, notes. Share the link or embed it on your site. No coding." },
+    { n: "02", title: "Follow-ups on autopilot", desc: "Day 1, Day 3, Day 7. Set the cadence, write the copy once, let it run. Clients get a reply even when you're on a job." },
+    { n: "03", title: "One screen, every lead", desc: "See who came in, who was contacted, who replied, who's still waiting. The dashboard that doesn't need a tutorial." },
+    { n: "04", title: "Boring where it should be", desc: "AES-256 at rest, OWASP-aligned, GDPR-ready. Client data stays yours — not shared, not sold, not used for anything else." },
+    { n: "05", title: "Live in five minutes", desc: "Sign in, pick a color, name your form, share the link. If you've ever filled out a form, you can set this up." },
+    { n: "06", title: "Flat pricing, no counting", desc: "One monthly rate. No per-lead charges, no per-contact fees, no tier gymnastics as you grow." },
   ];
-
   return (
-    <section id="features" className="py-24 bg-slate-950">
+    <section id="features" className="py-28 border-t border-[var(--rule)]">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Everything you need to convert leads</h2>
-          <p className="text-slate-400 max-w-xl mx-auto text-lg">Stop losing clients to forgotten follow-ups. ClientPulse handles it all.</p>
+        <div className="max-w-2xl mb-20">
+          <p className="text-sm text-[var(--muted)] mb-4">Features</p>
+          <h2 className="font-display text-[clamp(36px,5vw,64px)] leading-[1.02] text-[var(--ink)]">
+            Everything a one-person shop needs. Nothing it doesn&apos;t.
+          </h2>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-16">
           {features.map((f) => (
-            <div key={f.iconKey} className={`bg-slate-800/50 p-7 rounded-2xl border border-slate-700/50 border-t-4 ${f.topBorder} hover:bg-slate-800 hover:-translate-y-0.5 transition-all duration-200`}>
-              <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-5 ${f.iconColor}`}>
-                {featureIcons[f.iconKey]}
-              </div>
-              <h3 className="font-semibold text-lg mb-2 text-white">{f.title}</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">{f.desc}</p>
+            <div key={f.n}>
+              <div className="font-display text-5xl text-[var(--accent)] mb-5 tnum">{f.n}</div>
+              <h3 className="text-lg font-medium text-[var(--ink)] mb-2">{f.title}</h3>
+              <p className="text-[var(--muted)] leading-relaxed text-[15px]">{f.desc}</p>
             </div>
           ))}
         </div>
@@ -184,39 +159,27 @@ function Features() {
 // ─── How It Works ──────────────────────────────────────────────────
 function HowItWorks() {
   const steps = [
-    { num: "1", title: "Create your intake form", desc: "Choose what info you need from clients — name, email, phone, service type. Fully customizable in minutes.", icon: (<svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>) },
-    { num: "2", title: "Share the link", desc: "Embed on your website, share on social media, or text it to prospects. Works on any device.", icon: (<svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" /></svg>) },
-    { num: "3", title: "Leads come in automatically", desc: "Every submission lands in your dashboard instantly. You get notified the moment someone fills out your form.", icon: (<svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>) },
-    { num: "4", title: "Follow-ups go out on autopilot", desc: "Personalized emails send at the intervals you choose. Clients feel cared for without you lifting a finger.", icon: (<svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>) },
+    { num: "First", title: "Build your intake form", desc: "Pick the fields. Set your brand color. Takes a couple of minutes — it's a form, not an onboarding." },
+    { num: "Next", title: "Put the link where people find you", desc: "Website, Google Business Profile, Instagram bio, a text to a prospect. Works wherever a URL fits." },
+    { num: "Then", title: "Leads land in your inbox and dashboard", desc: "The moment someone submits, you know. Dashboard records it, email tells you, follow-up starts counting." },
+    { num: "Finally", title: "Follow-up runs on its own", desc: "Day 1, Day 3, Day 7 by default. Clients feel attended to even when you're swinging a wrench or at your kid's game." },
   ];
 
   return (
-    <section className="py-24 bg-slate-900">
+    <section id="how-it-works" className="py-28 bg-[var(--surface)] border-y border-[var(--rule)]">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">How it works</h2>
-          <p className="text-slate-400 text-lg">Up and running in under 5 minutes.</p>
+        <div className="max-w-2xl mb-20">
+          <p className="text-sm text-[var(--muted)] mb-4">How it works</p>
+          <h2 className="font-display text-[clamp(36px,5vw,64px)] leading-[1.02] text-[var(--ink)]">Up and running by lunchtime.</h2>
         </div>
-        <div className="relative max-w-3xl mx-auto">
-          <div className="absolute left-6 top-6 bottom-6 w-0.5 bg-blue-500/20 hidden sm:block" />
-          <div className="space-y-6">
-            {steps.map((s, i) => (
-              <div key={i} className="flex gap-6 items-start relative">
-                <div className="w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold text-lg shrink-0 z-10 shadow-lg shadow-blue-500/20">
-                  {s.num}
-                </div>
-                <div className="bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 flex-1 flex items-start justify-between gap-4 hover:bg-slate-800 hover:border-blue-500/30 transition">
-                  <div>
-                    <h3 className="font-semibold text-lg mb-1.5 text-white">{s.title}</h3>
-                    <p className="text-slate-400 leading-relaxed text-sm">{s.desc}</p>
-                  </div>
-                  <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0">
-                    {s.icon}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+        <div className="grid md:grid-cols-2 gap-x-16 gap-y-14 max-w-5xl">
+          {steps.map((s) => (
+            <div key={s.num} className="border-t border-[var(--rule)] pt-6">
+              <div className="font-display italic text-[var(--accent)] text-xl mb-3">{s.num}</div>
+              <h3 className="font-medium text-xl text-[var(--ink)] mb-2">{s.title}</h3>
+              <p className="text-[var(--muted)] leading-relaxed">{s.desc}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -226,8 +189,10 @@ function HowItWorks() {
 // ─── Pricing ──────────────────────────────────────────────────────
 function Pricing() {
   const [loading, setLoading] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   async function handleCheckout(plan: string) {
+    setError(null);
     setLoading(plan);
     try {
       const res = await fetch("/api/stripe/checkout", {
@@ -237,75 +202,85 @@ function Pricing() {
       });
       const data = await res.json();
       if (data.url) window.location.href = data.url;
-      else alert("Something went wrong. Please try again.");
+      else setError("We couldn't start checkout. Try again in a moment.");
     } catch {
-      alert("Something went wrong. Please try again.");
+      setError("Connection failed. Check your network and try again.");
     }
     setLoading(null);
   }
 
   return (
-    <section id="pricing" className="py-24 bg-slate-950">
+    <section id="pricing" className="py-28 border-t border-[var(--rule)]">
       <div className="max-w-5xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Simple, honest pricing</h2>
-          <p className="text-slate-400 text-lg">No hidden fees. No contracts. Cancel anytime.</p>
+        <div className="max-w-2xl mb-20">
+          <p className="text-sm text-[var(--muted)] mb-4">Pricing</p>
+          <h2 className="font-display text-[clamp(36px,5vw,64px)] leading-[1.02] text-[var(--ink)]">Two plans. No contracts. Cancel from your dashboard.</h2>
         </div>
-        <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto items-stretch">
+        <div className="grid sm:grid-cols-2 gap-6 items-stretch">
 
           {/* Starter */}
-          <div className="bg-slate-800/50 rounded-2xl border border-slate-700/50 p-8 flex flex-col hover:border-slate-600 hover:bg-slate-800 transition">
-            <h3 className="font-bold text-xl mb-1 text-white">Starter</h3>
-            <p className="text-slate-400 text-sm mb-6">Perfect for solo service providers.</p>
-            <div className="flex items-baseline gap-1 mb-8">
-              <span className="text-5xl font-bold text-white">$39</span>
-              <span className="text-slate-500 text-lg">/mo</span>
+          <div className="rounded-2xl bg-[var(--surface)] border border-[var(--rule)] p-9 flex flex-col">
+            <div className="flex items-baseline justify-between mb-6">
+              <h3 className="font-display text-2xl text-[var(--ink)]">Starter</h3>
+              <span className="font-display italic text-[var(--muted)]">solo</span>
             </div>
-            <ul className="space-y-3.5 mb-8 text-sm text-slate-300 flex-1">
-              {["Up to 50 clients", "Unlimited intake forms", "3-step follow-up sequences", "Client dashboard", "Email notifications", "Lead tracking dashboard"].map((item) => (
-                <li key={item} className="flex items-center gap-2.5">
-                  <svg className="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                  </svg>
-                  {item}
+            <div className="flex items-baseline gap-1 mb-2">
+              <span className="font-display text-6xl text-[var(--ink)] tnum">$39</span>
+              <span className="text-[var(--muted)]">/month</span>
+            </div>
+            <p className="text-sm text-[var(--muted)] mb-8">For solo service providers getting started.</p>
+            <ul className="space-y-3 mb-10 text-sm text-[var(--ink)] flex-1">
+              {["Up to 50 clients", "Unlimited intake forms", "3-step follow-up sequences", "Lead dashboard", "Email notifications", "7-day free trial"].map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <span className="text-[var(--accent)] mt-[2px]">—</span>
+                  <span>{item}</span>
                 </li>
               ))}
             </ul>
-            <button onClick={() => handleCheckout("starter")} disabled={loading === "starter"}
-              className="w-full bg-white text-slate-900 py-3 rounded-xl font-semibold hover:bg-blue-50 transition disabled:opacity-50 text-sm mt-auto">
-              {loading === "starter" ? "Loading..." : "Get Started"}
+            <button
+              onClick={() => handleCheckout("starter")}
+              disabled={loading === "starter"}
+              className="w-full border border-[var(--ink)] text-[var(--ink)] py-3 rounded-full text-sm font-medium hover:bg-[var(--ink)] hover:text-[var(--bg)] transition-colors disabled:opacity-50 mt-auto"
+            >
+              {loading === "starter" ? "Loading…" : "Start with Starter"}
             </button>
           </div>
 
           {/* Pro */}
-          <div className="bg-blue-600 rounded-2xl p-8 relative text-white shadow-xl shadow-blue-900/40 flex flex-col">
-            <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-white text-blue-600 text-xs font-bold px-4 py-1.5 rounded-full shadow-sm whitespace-nowrap">
-              MOST POPULAR
+          <div className="rounded-2xl bg-[var(--ink)] text-[var(--bg)] p-9 flex flex-col relative shadow-[0_30px_60px_-30px_rgba(26,19,16,0.4)]">
+            <div className="flex items-baseline justify-between mb-6">
+              <h3 className="font-display text-2xl">Pro</h3>
+              <span className="font-display italic opacity-70">growing</span>
             </div>
-            <h3 className="font-bold text-xl mb-1">Pro</h3>
-            <p className="text-blue-200 text-sm mb-6">For growing service businesses.</p>
-            <div className="flex items-baseline gap-1 mb-8">
-              <span className="text-5xl font-bold">$79</span>
-              <span className="text-blue-300 text-lg">/mo</span>
+            <div className="flex items-baseline gap-1 mb-2">
+              <span className="font-display text-6xl tnum">$89</span>
+              <span className="opacity-70">/month</span>
             </div>
-            <ul className="space-y-3.5 mb-8 text-sm text-blue-100 flex-1">
-              {["Up to 500 clients", "Everything in Starter", "Unlimited follow-up sequences", "SMS follow-ups", "Custom branding", "Priority support"].map((item) => (
-                <li key={item} className="flex items-center gap-2.5">
-                  <svg className="w-4 h-4 text-white shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                  </svg>
-                  {item}
+            <p className="text-sm opacity-70 mb-8">For shops with more than one job going at once.</p>
+            <ul className="space-y-3 mb-10 text-sm flex-1">
+              {["Everything in Starter", "Up to 500 clients", "Unlimited follow-up sequences", "SMS follow-ups", "Custom branding", "Priority support"].map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <span className="text-[var(--bg)] opacity-60 mt-[2px]">—</span>
+                  <span>{item}</span>
                 </li>
               ))}
             </ul>
-            <button onClick={() => handleCheckout("pro")} disabled={loading === "pro"}
-              className="w-full bg-white text-blue-600 py-3 rounded-xl font-semibold hover:bg-blue-50 transition disabled:opacity-50 text-sm mt-auto">
-              {loading === "pro" ? "Loading..." : "Get Started"}
+            <button
+              onClick={() => handleCheckout("pro")}
+              disabled={loading === "pro"}
+              className="w-full bg-[var(--bg)] text-[var(--ink)] py-3 rounded-full text-sm font-medium hover:bg-[#fcfaf5] transition-colors disabled:opacity-50 mt-auto"
+            >
+              {loading === "pro" ? "Loading…" : "Start with Pro"}
             </button>
           </div>
 
         </div>
-        <p className="text-center text-sm text-slate-500 mt-8">7-day free trial · No credit card required</p>
+        {error && (
+          <p className="text-center text-sm text-[var(--warn)] mt-8" role="alert">
+            {error}
+          </p>
+        )}
+        <p className="text-center text-xs text-[var(--muted)] mt-10">Both plans include a seven-day trial. No card required.</p>
       </div>
     </section>
   );
@@ -314,20 +289,22 @@ function Pricing() {
 // ─── CTA Banner ───────────────────────────────────────────────────
 function CTABanner() {
   return (
-    <section className="py-20 bg-blue-600 relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_80%_at_50%_120%,rgba(255,255,255,0.08),transparent)] pointer-events-none" />
-      <div className="relative max-w-3xl mx-auto px-6 text-center">
-        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Ready to stop losing leads?</h2>
-        <p className="text-blue-200 text-lg mb-10 leading-relaxed">Set up in 5 minutes. Your next client is already out there — make sure you follow up.</p>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-          <a href="/signup" className="w-full sm:w-auto bg-white text-blue-600 px-8 py-3.5 rounded-xl text-base font-semibold hover:bg-blue-50 transition shadow-lg">
-            Start Free Trial →
+    <section className="py-24 bg-[var(--accent)] text-[var(--accent-ink)]">
+      <div className="max-w-4xl mx-auto px-6 text-center">
+        <h2 className="font-display text-[clamp(36px,5vw,64px)] leading-[1.02] mb-6">
+          Your next client is already looking for you.
+        </h2>
+        <p className="text-lg opacity-85 max-w-xl mx-auto mb-10 leading-relaxed">
+          The question is whether you&apos;ll be the one who answers first.
+        </p>
+        <div className="flex flex-wrap items-center justify-center gap-5">
+          <a href="/signup" className="bg-[var(--bg)] text-[var(--ink)] px-6 py-3 rounded-full text-sm font-medium hover:bg-[#fcfaf5] transition-colors">
+            Start a free trial
           </a>
-          <a href="#pricing" className="w-full sm:w-auto text-blue-200 px-8 py-3.5 rounded-xl text-base font-medium hover:text-white hover:bg-white/10 transition border border-blue-400/50">
-            View pricing
+          <a href="#pricing" className="text-sm font-medium underline underline-offset-4 decoration-white/50 hover:decoration-white transition-colors">
+            See the plans
           </a>
         </div>
-        <p className="mt-5 text-sm text-blue-300">7-day free trial · Cancel anytime</p>
       </div>
     </section>
   );
@@ -338,41 +315,44 @@ function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
 
   const faqs = [
-    { q: "I already have a contact form on my website. Why do I need this?", a: "A contact form collects information — that's it. When a lead comes in at 9 PM and you're off the clock, nothing happens until you remember to check. ClientPulse sends a branded, professional response within seconds, then follows up automatically on Day 3 and Day 7. Most service businesses lose 3-5 leads a month to slow follow-up. ClientPulse makes sure that doesn't happen." },
-    { q: "How does this work with my existing website?", a: "You get a unique link to your branded intake form. You can add it as a button on your website, share it on social media, text it to prospects, or include it in your Google Business profile. It works on any device — no coding or IT help required. Takes about 5 minutes from signup to going live." },
-    { q: "What happens to my client data? Is it secure?", a: "Every piece of client information is encrypted with AES-256 — the same standard used by banks and government agencies. We follow OWASP security standards, apply strict access controls, and are fully GDPR compliant. Your clients' data is never shared, sold, or used for anything other than powering your follow-ups." },
-    { q: "What if I want to customize the follow-up emails?", a: "Your follow-up emails are sent under your business name, with your brand colors, and from your reply-to address. When a client receives a follow-up, it looks like it came directly from you — not from a third-party tool. Pro plan users can create unlimited custom sequences tailored to different services." },
-    { q: "How much does it cost, and is there a contract?", a: "Plans start at $39/month with a 7-day free trial — no credit card required to start. There are no contracts, no setup fees, and no per-lead charges. You can cancel anytime from your dashboard. If you're not satisfied within 30 days, we'll refund you in full, no questions asked." },
-    { q: "Will this actually help me get more clients?", a: "Research shows that responding to a lead within 5 minutes makes you 21 times more likely to close the deal. Most service businesses take hours or days to respond. ClientPulse responds for you in seconds and keeps following up so leads don't go cold. If you're losing even one job a month to slow follow-up, ClientPulse pays for itself many times over." },
-    { q: "I'm not tech-savvy. Can I still use this?", a: "ClientPulse was built specifically for business owners who don't have time to learn complicated software. Setup takes 5 minutes: enter your business name, pick your brand color, and share your link. That's it. There's no CRM to configure, no integrations to set up, and no training required." },
+    { q: "I already have a contact form on my website. Why do I need this?", a: "A contact form collects information — that's it. When a lead comes in at 9 PM and you're off the clock, nothing happens until you remember to check. ClientPulse replies within seconds, then follows up on Day 3 and Day 7 automatically. Most service businesses lose a handful of leads every month to slow follow-up. This closes that gap." },
+    { q: "How does it work with my existing website?", a: "You get a link to a branded intake form. Put it on a button, share it on social, text it to a prospect, drop it in your Google Business Profile. Works on any device. From signup to live is about five minutes." },
+    { q: "Is client data secure?", a: "Encrypted with AES-256 at rest, OWASP-aligned, GDPR-ready. Client data isn't shared, sold, or used for anything but your follow-ups." },
+    { q: "Can I customize the follow-up emails?", a: "Yes. Emails go out under your business name with your brand color and reply-to address. Pro users get unlimited sequences for different services." },
+    { q: "How much does it cost, and is there a contract?", a: "Starter is $39/month, Pro is $89/month. Both start with a seven-day free trial — no card required. No contracts, no setup fees, no per-lead charges. Cancel anytime from your dashboard." },
+    { q: "Will this actually help me get more clients?", a: "Replying to a lead within five minutes puts you well ahead of your competition. Most service businesses take hours or days — and leads get bored and move on. ClientPulse replies in seconds and keeps nudging so prospects don't go cold while you're on a job." },
+    { q: "I'm not tech-savvy. Can I still use this?", a: "Yes. Setup is: enter your business name, pick a brand color, share the link. No CRM to configure. No training required." },
   ];
 
   return (
-    <section id="faq" className="py-24 bg-slate-900">
+    <section id="faq" className="py-28 border-t border-[var(--rule)]">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="grid lg:grid-cols-5 gap-16 items-start">
-          <div className="lg:col-span-2 lg:sticky lg:top-28">
-            <div className="inline-flex items-center gap-2 bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-sm font-medium mb-6 border border-blue-500/30">
-              <span className="w-1.5 h-1.5 bg-blue-400 rounded-full" />
-              FAQ
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 leading-tight">Got questions?<br />We've got answers.</h2>
-            <p className="text-slate-400 leading-relaxed mb-8">Everything you need to know about ClientPulse. Can't find what you're looking for?</p>
-            <a href="mailto:hello@clientpulse.io" className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/20 px-5 py-2.5 rounded-xl text-sm font-medium transition">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-              Email us
+        <div className="grid lg:grid-cols-[2fr_3fr] gap-16 items-start">
+          <div className="lg:sticky lg:top-28">
+            <p className="text-sm text-[var(--muted)] mb-4">FAQ</p>
+            <h2 className="font-display text-[clamp(36px,5vw,56px)] leading-[1.02] text-[var(--ink)] mb-6">Questions, honestly answered.</h2>
+            <p className="text-[var(--muted)] leading-relaxed mb-8">If something&apos;s missing from this list, send a note and I&apos;ll answer within a day.</p>
+            <a href="mailto:hello@clientpulse.dev" className="inline-flex items-center gap-2 text-sm text-[var(--ink)] underline underline-offset-4 decoration-[var(--muted)] hover:decoration-[var(--ink)] transition-colors">
+              hello@clientpulse.dev
             </a>
           </div>
-          <div className="lg:col-span-3 space-y-3">
+          <div className="space-y-2">
             {faqs.map((f, i) => (
-              <div key={i} className={`rounded-2xl border transition-all duration-200 overflow-hidden ${open === i ? "bg-white/10 border-blue-400/50" : "bg-white/5 border-white/10 hover:border-white/20"}`}>
-                <button onClick={() => setOpen(open === i ? null : i)} className="w-full px-6 py-5 flex justify-between items-center text-left gap-4">
-                  <span className={`font-semibold text-base transition-colors ${open === i ? "text-white" : "text-slate-300"}`}>{f.q}</span>
-                  <span className={`shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-all duration-200 text-sm font-bold ${open === i ? "bg-blue-500 text-white rotate-45" : "bg-white/10 text-slate-400"}`}>+</span>
+              <div key={i} className="border-t border-[var(--rule)] last:border-b">
+                <button
+                  onClick={() => setOpen(open === i ? null : i)}
+                  className="w-full py-5 flex justify-between items-start text-left gap-6"
+                >
+                  <span className="font-medium text-[var(--ink)]">{f.q}</span>
+                  <span className={`shrink-0 font-display text-xl text-[var(--muted)] leading-none mt-0.5 transition-transform ${open === i ? "rotate-45" : ""}`}>+</span>
                 </button>
-                {open === i && <div className="px-6 pb-5 text-slate-300 text-sm leading-relaxed border-t border-white/10 pt-4">{f.a}</div>}
+                <div
+                  className={`grid transition-[grid-template-rows] duration-300 ease-out ${open === i ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}
+                >
+                  <div className="overflow-hidden">
+                    <p className="pb-6 pr-10 text-[var(--muted)] leading-relaxed">{f.a}</p>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
@@ -385,47 +365,49 @@ function FAQ() {
 // ─── Footer ───────────────────────────────────────────────────────
 function Footer() {
   return (
-    <footer className="bg-slate-950 text-slate-500 border-t border-white/5">
-      <div className="max-w-6xl mx-auto px-6 py-16">
-        <div className="grid sm:grid-cols-5 gap-10 pb-12 border-b border-white/5">
-          <div className="sm:col-span-2">
-            <a href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center text-white font-bold text-sm">CP</div>
-              <span className="font-bold text-lg text-white">ClientPulse</span>
-            </a>
-            <p className="text-sm leading-relaxed mb-6">Client intake and follow-up automation for service businesses. Never lose a lead again.</p>
-            <a href="/signup" className="inline-flex items-center gap-2 bg-blue-500 text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-blue-400 transition">
-              Start Free Trial →
+    <footer className="bg-[var(--ink)] text-[var(--bg)]">
+      <div className="max-w-6xl mx-auto px-6 pt-20 pb-10">
+        <div className="grid sm:grid-cols-[2fr_1fr_1fr_1fr] gap-10 pb-16 border-b border-white/10">
+          <div>
+            <p className="font-display text-3xl mb-4">ClientPulse</p>
+            <p className="text-sm leading-relaxed opacity-70 max-w-xs mb-6">Client intake and follow-up for service businesses that don&apos;t have time for a CRM.</p>
+            <a href="/signup" className="inline-block bg-[var(--bg)] text-[var(--ink)] px-5 py-2.5 rounded-full text-sm font-medium hover:bg-[#fcfaf5] transition-colors">
+              Start free trial
             </a>
           </div>
           <div>
-            <h4 className="text-white font-semibold mb-4 text-sm">Product</h4>
-            <ul className="space-y-3 text-sm">
-              <li><a href="#features" className="hover:text-white transition">Features</a></li>
-              <li><a href="#pricing" className="hover:text-white transition">Pricing</a></li>
-              <li><a href="#faq" className="hover:text-white transition">FAQ</a></li>
+            <h4 className="text-sm font-medium mb-4 opacity-100">Product</h4>
+            <ul className="space-y-2.5 text-sm opacity-70">
+              <li><a href="#features" className="hover:opacity-100 transition-opacity">Features</a></li>
+              <li><a href="#pricing" className="hover:opacity-100 transition-opacity">Pricing</a></li>
+              <li><a href="#faq" className="hover:opacity-100 transition-opacity">FAQ</a></li>
+              <li><a href="/intake" className="hover:opacity-100 transition-opacity">Sample intake form</a></li>
             </ul>
           </div>
           <div>
-            <h4 className="text-white font-semibold mb-4 text-sm">Get Started</h4>
-            <ul className="space-y-3 text-sm">
-              <li><a href="/signup" className="hover:text-white transition">Sign Up</a></li>
-              <li><a href="/login" className="hover:text-white transition">Log In</a></li>
-              <li><a href="/intake" className="hover:text-white transition">Intake Form</a></li>
+            <h4 className="text-sm font-medium mb-4 opacity-100">Account</h4>
+            <ul className="space-y-2.5 text-sm opacity-70">
+              <li><a href="/signup" className="hover:opacity-100 transition-opacity">Sign up</a></li>
+              <li><a href="/login" className="hover:opacity-100 transition-opacity">Log in</a></li>
             </ul>
           </div>
           <div>
-            <h4 className="text-white font-semibold mb-4 text-sm">Company</h4>
-            <ul className="space-y-3 text-sm">
-              <li><a href="/terms" className="hover:text-white transition">Terms of Service</a></li>
-              <li><a href="/privacy" className="hover:text-white transition">Privacy Policy</a></li>
-              <li><a href="mailto:hello@clientpulse.io" className="hover:text-white transition">Contact</a></li>
+            <h4 className="text-sm font-medium mb-4 opacity-100">Company</h4>
+            <ul className="space-y-2.5 text-sm opacity-70">
+              <li><a href="mailto:hello@clientpulse.dev" className="hover:opacity-100 transition-opacity">Contact</a></li>
+              <li><a href="/privacy" className="hover:opacity-100 transition-opacity">Privacy</a></li>
+              <li><a href="/terms" className="hover:opacity-100 transition-opacity">Terms</a></li>
             </ul>
           </div>
         </div>
-        <div className="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-xs">&copy; {new Date().getFullYear()} ClientPulse. All rights reserved.</p>
-          <p className="text-xs">Early access · <a href="/signup" className="text-blue-400 hover:text-blue-300 transition">Join today</a></p>
+        <div className="pt-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 text-xs opacity-60">
+          <p>&copy; {new Date().getFullYear()} ClientPulse</p>
+          <p>
+            Built by{" "}
+            <a href="https://pauladejayan.github.io/" className="underline underline-offset-4 hover:opacity-100 transition-opacity">
+              Paul Adejayan
+            </a>
+          </p>
         </div>
       </div>
     </footer>
